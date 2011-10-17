@@ -1,0 +1,19 @@
+{
+  "author": "Sami Kukkonen <sami.matias.kukkonen@gmail.com>",
+  "name": "wolfram",
+  "description": "Wolfram Alpha API",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/liquidproof/wolfram.git"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": "~v0.4.11"
+  },
+  "dependencies": {
+    "request": "2.1",
+    "o3-xml": "0.1"
+  },
+  "devDependencies": {}
+}
