@@ -13,6 +13,7 @@ Install the module with npm:
 `$ npm install wolfram`
 
 Example usage:
+
 ```javascript
 var wolfram = require('wolfram').createClient("[CENSORED]")
 
@@ -21,7 +22,6 @@ wolfram.query("integrate 2x", function(err, result) {
   console.error("result", result)
 })
 ```
-
 
 License
 -------
