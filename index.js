@@ -2,10 +2,17 @@ var xml = require('o3-xml'),
     request = require('request')
 
 var Client = exports.Client = function Client(appKey) {
-  this.appKey = appKey
+  if(!appKey)
+    console.warn("Warning: Wolfram|Alpha application key not set")
+  else
+    this.appKey = appKey
 }
 
 Client.prototype.query = function(input, cb) {
+  if(!this.appKey) {
+    return cb("Application key not set", null)
+  }
+  
   var uri = 'http://api.wolframalpha.com/v2/query?input=' + encodeURIComponent(input) + '&primary=true&appid=' + this.appKey
   
   request(uri, function(error, response, body) {
