@@ -42,6 +42,7 @@ Client.prototype.query = function(input, cb) {
             
             subpod.title = subpodNode.getAttribute('title')
             subpod.value = subpodNode.selectSingleNode('descendant-or-self::plaintext').nodeValue
+            subpod.image = subpodNode.selectSingleNode('descendant-or-self::img').getAttribute('src')
             
             pod.subpods.push(subpod)
           }
