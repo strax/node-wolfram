@@ -6,6 +6,7 @@ test('bogus application id', function(t) {
   
   client.query("integrate 2x", function(err, result) {
     t.type(err, "string", "error should be a string describing the message")
+    t.notOk(result, "result should be null")
     t.end()
   })
 })

@@ -23,6 +23,11 @@ wolfram.query("integrate 2x", function(err, result) {
 })
 ```
 
+Running tests
+-------------
+
+`$ WOLFRAM_APPID=your-app-id npm test`
+
 License
 -------
 
