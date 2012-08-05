@@ -1,4 +1,4 @@
-var xml = require('o3-xml'),
+var xml = require('libxmljs'),
     request = require('request')
 
 var Client = exports.Client = function Client(appKey) {
@@ -17,32 +17,34 @@ Client.prototype.query = function(input, cb) {
   
   request(uri, function(error, response, body) {
     if(!error && response.statusCode == 200) {
-      var doc = xml.parseFromString(body),
-          rootNode = doc.documentElement
+      var doc = xml.parseXml(body),
+          rootNode = doc.root()
       
-      if(rootNode.getAttribute('error') != 'false') {
-        var message = rootNode.selectSingleNode('descendant-or-self::error/msg').nodeValue
+      if(rootNode.attr('error').value() != 'false') {
+        var message = rootNode.get('descendant-or-self::error/msg').text()
         return cb(message, null)
       } else {
         var result = [],
-            podNodes = rootNode.selectNodes('descendant-or-self::pod')
+            podNodes = rootNode.find('descendant-or-self::pod')
           
         for(var i = 0; i < podNodes.length; i++) {
           var podNode = podNodes[i],
               pod = { subpods: [] }
           
-          pod.title = podNode.getAttribute('title')
-          if(podNode.getAttribute('primary') == 'true')
+          pod.title = podNode.attr('title').value()
+          if(podNode.attr('primary') && podNode.attr('primary').value() == 'true')
             pod.primary = true
+          else
+            pod.primary = false
           
-          var subpodNodes = podNode.selectNodes('descendant-or-self::subpod')
+          var subpodNodes = podNode.find('descendant-or-self::subpod')
           for(var j = 0; j < subpodNodes.length; j++) {
             var subpodNode = subpodNodes[j]
               , subpod = {}
             
-            subpod.title = subpodNode.getAttribute('title')
-            subpod.value = subpodNode.selectSingleNode('descendant-or-self::plaintext').nodeValue
-            subpod.image = subpodNode.selectSingleNode('descendant-or-self::img').getAttribute('src')
+            subpod.title = subpodNode.attr('title').value()
+            subpod.value = subpodNode.get('descendant-or-self::plaintext').text()
+            subpod.image = subpodNode.get('descendant-or-self::img').attr('src').value()
             
             pod.subpods.push(subpod)
           }
