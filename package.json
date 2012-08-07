@@ -12,7 +12,7 @@
   },
   "main": "index.js",
   "engines": {
-    "node": "~0.4.7"
+    "node": ">=0.4.7"
   },
   "dependencies": {
     "request": "2.1",
