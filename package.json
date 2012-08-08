@@ -2,6 +2,7 @@
   "author": "Sami Kukkonen <sami.matias.kukkonen@gmail.com>",
   "name": "wolfram",
   "description": "Wolfram Alpha API",
+  "keywords": "wolfram alpha api wolframalpha",
   "version": "0.2.2",
   "repository": {
     "type": "git",
