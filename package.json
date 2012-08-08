@@ -3,7 +3,7 @@
   "name": "wolfram",
   "description": "Wolfram Alpha API",
   "keywords": "wolfram alpha api wolframalpha",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "repository": {
     "type": "git",
     "url": "git://github.com/liquidproof/wolfram.git"
