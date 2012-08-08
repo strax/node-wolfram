@@ -9,47 +9,29 @@ Client.prototype.query = function(input, cb) {
   if(!this.appKey) {
     return cb("Application key not set", null)
   }
-  
+
   var uri = 'http://api.wolframalpha.com/v2/query?input=' + encodeURIComponent(input) + '&primary=true&appid=' + this.appKey
-  
+
   request(uri, function(error, response, body) {
     if(!error && response.statusCode == 200) {
-      var doc = xml.parseXml(body),
-          rootNode = doc.root()
-      
-      if(rootNode.attr('error').value() != 'false') {
-        var message = rootNode.get('descendant-or-self::error/msg').text()
+      var doc = xml.parseXml(body), root = doc.root()
+
+      if(root.attr('error').value() != 'false') {
+        var message = root.get('//error/msg').text()
         return cb(message, null)
       } else {
-        var result = [],
-            podNodes = rootNode.find('descendant-or-self::pod')
-          
-        for(var i = 0; i < podNodes.length; i++) {
-          var podNode = podNodes[i],
-              pod = { subpods: [] }
-          
-          pod.title = podNode.attr('title').value()
-          if(podNode.attr('primary') && podNode.attr('primary').value() == 'true')
-            pod.primary = true
-          else
-            pod.primary = false
-          
-          var subpodNodes = podNode.find('descendant-or-self::subpod')
-          for(var j = 0; j < subpodNodes.length; j++) {
-            var subpodNode = subpodNodes[j]
-              , subpod = {}
-            
-            subpod.title = subpodNode.attr('title').value()
-            subpod.value = subpodNode.get('descendant-or-self::plaintext').text()
-            subpod.image = subpodNode.get('descendant-or-self::img').attr('src').value()
-            
-            pod.subpods.push(subpod)
-          }
-          
-          result.push(pod)
-        }
-        
-        return cb(null, result)
+        var pods = root.find('//pod').map(function(pod) {
+          var subpods = pod.find('//subpod').map(function(node) {
+            return {
+              title: node.attr('title').value(),
+              value: node.get('//plaintext').text(),
+              image: node.get('//img').attr('src').value()
+            }
+          })
+          var primary = (pod.attr('primary') && pod.attr('primary').value()) == 'true' ? true : false
+          return { subpods: subpods, primary: primary }
+        })
+       return cb(null, pods)
       }
     }
   })
