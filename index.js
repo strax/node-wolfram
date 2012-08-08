@@ -2,10 +2,7 @@ var xml = require('libxmljs'),
     request = require('request')
 
 var Client = exports.Client = function Client(appKey) {
-  if(!appKey)
-    console.warn("Warning: Wolfram|Alpha application key not set")
-  else
-    this.appKey = appKey
+  this.appKey = appKey
 }
 
 Client.prototype.query = function(input, cb) {
