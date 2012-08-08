@@ -1,8 +1,7 @@
 Wolfram - a Wolfram|Alpha API wrapper for Node.js
 =================================================
 
-Wolfram is a simple Wolfram|Alpha API wrapper for Node.js.
-Currently it supports only answers with primary results with plaintext answers but pod image support will be added in the future.
+Wolfram is a simple Wolfram|Alpha API wrapper for Node.js with support for both plaintext and image results.
 
 How to use
 ----------
