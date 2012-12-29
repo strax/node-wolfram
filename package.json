@@ -6,7 +6,7 @@
   "version": "0.2.3",
   "repository": {
     "type": "git",
-    "url": "git://github.com/liquidproof/wolfram.git"
+    "url": "git://github.com/strax/wolfram.git"
   },
   "scripts": {
     "test": "tap test/*.js"
