@@ -18,7 +18,7 @@ var wolfram = require('wolfram').createClient("[CENSORED]")
 
 wolfram.query("integrate 2x", function(err, result) {
   if(err) throw err
-  console.error("result", result)
+  console.log("Result: %j", result)
 })
 ```
 
