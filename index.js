@@ -28,7 +28,7 @@ Client.prototype.query = function(input, cb) {
               image: node.get('img').attr('src').value()
             }
           })
-          var primary = (pod.attr('primary') && pod.attr('primary').value()) == 'true' ? true : false
+          var primary = (pod.attr('primary') && pod.attr('primary').value()) == 'true'
           return { subpods: subpods, primary: primary }
         })
        return cb(null, pods)
