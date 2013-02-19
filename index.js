@@ -20,12 +20,12 @@ Client.prototype.query = function(input, cb) {
         var message = root.get('//error/msg').text()
         return cb(message, null)
       } else {
-        var pods = root.find('//pod').map(function(pod) {
-          var subpods = pod.find('//subpod').map(function(node) {
+        var pods = root.find('pod').map(function(pod) {
+          var subpods = pod.find('subpod').map(function(node) {
             return {
               title: node.attr('title').value(),
-              value: node.get('//plaintext').text(),
-              image: node.get('//img').attr('src').value()
+              value: node.get('plaintext').text(),
+              image: node.get('img').attr('src').value()
             }
           })
           var primary = (pod.attr('primary') && pod.attr('primary').value()) == 'true' ? true : false

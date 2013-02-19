@@ -14,4 +14,14 @@ test('valid response', function(t) {
     t.ok(result[0].subpods[0].image, "result should have an image representation")
     t.end()
   })
+
+  client.query("1+1", function(err, result) {
+    t.notOk(err, "err should be null")
+    t.type(result, "object")
+    t.ok(result.length)
+    t.equal(result.length, 6)
+    t.equal(result[1].primary, true)
+    t.equal(result[1].subpods[0].value, '2')
+    t.end()
+  })
 })
