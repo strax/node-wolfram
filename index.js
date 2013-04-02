@@ -33,6 +33,8 @@ Client.prototype.query = function(input, cb) {
         })
        return cb(null, pods)
       }
+    } else {
+      return cb(error, null)
     }
   })
 }
