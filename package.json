@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "request": "2.1",
-    "libxmljs": "0.6"
+    "libxmljs": "0.7.1"
   },
   "devDependencies": {
     "tap": "0.0.x"
