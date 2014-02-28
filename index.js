@@ -29,7 +29,7 @@ Client.prototype.query = function(input, cb) {
             }
           })
           var primary = (pod.attr('primary') && pod.attr('primary').value()) == 'true'
-          return { subpods: subpods, primary: primary }
+          return { title : pod.attr('title').value(),subpods: subpods, primary: primary }
         })
        return cb(null, pods)
       }
