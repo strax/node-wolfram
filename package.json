@@ -20,6 +20,6 @@
     "libxmljs": "0.8.1"
   },
   "devDependencies": {
-    "tap": "0.0.x"
+    "tap": "~> 0.4.0"
   }
 }
