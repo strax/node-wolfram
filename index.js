@@ -21,6 +21,7 @@ Client.prototype.query = function(input, cb) {
         return cb(message, null)
       } else {
         var pods = root.find('pod').map(function(pod) {
+       	  var title = pod.attr('title').value();
           var subpods = pod.find('subpod').map(function(node) {
             return {
               title: node.attr('title').value(),
@@ -29,7 +30,7 @@ Client.prototype.query = function(input, cb) {
             }
           })
           var primary = (pod.attr('primary') && pod.attr('primary').value()) == 'true'
-          return { subpods: subpods, primary: primary }
+          return { title : title, subpods: subpods, primary: primary }
         })
        return cb(null, pods)
       }
