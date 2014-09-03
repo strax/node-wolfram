@@ -25,9 +25,18 @@ wolfram.query("integrate 2x", function(err, result) {
 Running tests
 -------------
 
+Be sure to have [tap](https://www.npmjs.org/package/tap) globally installed: 
+`$ npm install tap -g`
+
+On some systems `sudo` rights may be required.
+
+Once `tap` is installed navigate to the project folder and run `npm install` to install the project's dependencies.
+
+Finally run the following command, substituting your Wolfram|Alpha application ID.
+
 `$ WOLFRAM_APPID=your-app-id npm test`
 
 License
 -------
 
-MIT
+[MIT](https://github.com/strax/node-wolfram/blob/master/LICENSE)
