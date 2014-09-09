@@ -25,9 +25,13 @@ wolfram.query("integrate 2x", function(err, result) {
 Running tests
 -------------
 
+Navigate to the project folder and run `npm install` to install the project's dependencies.
+
+Run the following command, substituting `your-app-id` with your Wolfram|Alpha application ID.
+
 `$ WOLFRAM_APPID=your-app-id npm test`
 
 License
 -------
 
-MIT
+[MIT](https://github.com/strax/node-wolfram/blob/master/LICENSE)
