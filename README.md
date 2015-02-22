@@ -1,4 +1,4 @@
-Wolfram - a Wolfram|Alpha API wrapper for Node.js
+Wolfram - a Wolfram|Alpha API wrapper for Node.js [![Build Status](https://travis-ci.org/strax/node-wolfram.svg?branch=master)](https://travis-ci.org/strax/node-wolfram)
 =================================================
 
 Wolfram is a simple Wolfram|Alpha API wrapper for Node.js with support for both plaintext and image results.
