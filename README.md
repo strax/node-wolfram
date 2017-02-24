@@ -6,7 +6,7 @@ Wolfram is a simple Wolfram|Alpha API wrapper for Node.js with support for both 
 How to use
 ----------
 
-Register for an application ID in the [Wolfram|Alpha developer website](http://products.wolframalpha.com/developers/). 
+Register for a Wolfram|Alpha application ID. The Wolfram|Alpha® API is available for free for non-commercial experimental use with a low monthly cap on queries.  For more information, visit [http://products.wolframalpha.com/developers/](http://products.wolframalpha.com/developers/). Wolfram is a registered trademark of the Wolfram Group of Companies. 
 
 Install the module with npm:
 `$ npm install wolfram`
