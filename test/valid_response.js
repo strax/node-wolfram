@@ -1,7 +1,7 @@
 var test = require('tap').test,
     wolfram = require('../')
 
-test('valid response', function(t) {
+test('valid response', {timeout: 5000}, function(t) {
   var client = wolfram.createClient(process.env.WOLFRAM_APPID)
 
   t.test("integrate 2x", function(t) {
